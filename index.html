@@ -1,0 +1,33 @@
+<html>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script type="text/javascript">
+        // Seleccionamos el elemento div con la id 'app'
+        const app = document.getElementById("app");
+
+        // Creamos un nuevo elemento h1
+        const header = document.createElement("h1");
+
+        // Creamos un nuevo nodo de texto para el elemento h1 
+        const text = "Develop. Preview. Ship";
+        const headerContent = document.createTextNode(text);
+
+        // Instalamos el nodo de texto dentro del header
+        header.appendChild(headerContent);
+
+        // Instalamos el header dentro del div 'app'
+        app.appendChild(header);
+
+        // Esta larga lista de pasos solo para instalar un <h1> con texto es un reflejo
+        // de lo verboso que puede resultar una programación IMPERATIVA: es decir, le indicamos
+        // a la computadora los pasos a seguir para instalar ese texto en un <h1>.
+
+        // Un acercamiento DECLARATIVO (que es el que utiliza React) prefiere indicar a la computadora
+        // que es lo que necesitamos que muestre y le permite a ella decidir los pasos a seguir para ese propósito
+    </script>
+</body>
+
+</html>
