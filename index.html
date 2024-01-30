@@ -16,14 +16,24 @@
         return <h1>Develop. Preview. Ship.</h1>
       }
 
+      // Para demostrar el nesting o anidado de componentes, creamos el componente HomePage
+      // Y alojamos el componente Header dentro de él.
+      function HomePage() {
+        return (
+          <div>
+            <Header/>
+          </div>
+        )
+      }
+
         // apuntamos al div con id 'app'
         const app = document.getElementById('app');
         // señalamos nuestra root donde desplegaremos nuestros componentes
         const root = ReactDOM.createRoot(app);
         // con el método root.render le indicamos lo que queremos desplegar declarativamente en el componente.
 
-        // Aquí en el root.render declaramos el componente entre brackets
-        root.render(<Header/>);
+        // Aquí en el root.render declaramos el componente Homepage entre brackets para que renderize todo
+        root.render(<HomePage/>);
         // nota: es necesario utilizar Babel para realizar la conversión a jsx
       </script>
   </script>
