@@ -7,20 +7,25 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/jsx">
 
-      //Creamos nuestro primer componente header
-      // Debemos recordar:
-      // 1. Tanto en su declaración como a la hora de llamarlo, el componente comienza en mayúscula.
-      // 2. A la hora de llamarlo, es necesario hacerlo entre brackets:
+      //Props:
+      //Podemos usar Props (los argumentos de nuestros componentes) para pasar
+      //información de nuestros componentes padres a nuestros componentes hijos
+      //Modificaremos el componente Header para que acepte Props desde Homepage
+      //Para inyectar JS dentro de nuestro JSX, utilizaremos brackets {}
 
-      function Header() {
-        return <h1>Develop. Preview. Ship.</h1>
+      function Header({title}) {
+        return <h1>{ title ? title : 'titulo por defecto' }</h1>
       }
 
-      // Para demostrar el nesting o anidado de componentes, creamos el componente HomePage
-      // Y alojamos el componente Header dentro de él.
+      // Para demostrar este comportamiento, instalaremos 3 Headers 
+      // dentro de Homepage: dos tendrán títulos que inyectaremos desde el componente
+      // Homepage, y el tercero no tendrá, para que tenga que recurrir al título por defecto:
+
       function HomePage() {
         return (
           <div>
+            <Header title='React es lo máximo'/>
+            <Header title='No veo la hora de saber Next.js!'/>
             <Header/>
           </div>
         )
