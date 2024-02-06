@@ -2,66 +2,44 @@
 
 <body>
   <div id="app"></div>
+
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
   <script type="text/jsx">
-
-      // State & event handlers:
-      // Recurriendo a State y a event handlers, crearemos un boton de 'Like' para el componente Homepage:
-      // 1. Creamos el botón de 'Like' dentro del return de Homepage()
-      // 2. Insertamos el evento onClick (camelCase porque así es React) para asignarle una función al botón
-      // 3. Creamos una función, dentro del componente HomePage() pero antes del return que maneje el evento. Le llamaremos handleClick()
-      // 4. Asignamos al evento onClick la función handleClick.
-      // 5. Recurriremos a State, uno de los hooks de React, para almacenar e incrementar el número de veces que se ha dado click.
-      //    En particular, utilziaremos useState(). Este devolverá un array con dos elementos: el primero es el valor a almacenar,
-      //    El segundo es la función que actualizará el valor.
-      // 6. Como ya asignamos en la declaración del setState el valor inicial de los 'likes', lo incluiremos para que se despliegue
-      //    En el componente.
-      // 7. A continuación, agregaremos la función de actualización de estado 'setLikes' a la función handleClick, para que actualice el valor
-      //    del State cada vez que alguien haga click sobre el botón.
-
-      function Header({title}) {
-        return <h1>{ title ? title : 'titulo por defecto' }</h1>
+      const app = document.getElementById("app")
+ 
+      function Header({ title }) {
+        return <h1>{title ? title : "Default title"}</h1>
       }
-
+ 
       function HomePage() {
-        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
-        
-        // useState():
-        // El valor lo llamaremos 'likes', y la función actualizadora será 'setLikes'
-        // dentro del paréntesis de useState, indicaremos el valor inicial de los likes: 0.
-        const [likes, setLikes] = React.useState(0);
-
+        const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"]
+ 
+        const [likes, setLikes] = React.useState(0)
+ 
         function handleClick() {
-          console.log('Incrementa en uno el número de likes.')
-          setLikes(likes +1);
+          setLikes(likes + 1)
         }
-
+ 
         return (
           <div>
-            <Header title='Develop. Preview. Ship'/>
+            <Header title="Develop. Preview. Ship." />
             <ul>
-              {names.map(name => (
+              {names.map((name) => (
                 <li key={name}>{name}</li>
               ))}
             </ul>
-            <button onClick={handleClick}>Likes ({likes})</button>
+ 
+            <button onClick={handleClick}>Like ({likes})</button>
           </div>
         )
       }
-
-        // apuntamos al div con id 'app'
-        const app = document.getElementById('app');
-        // señalamos nuestra root donde desplegaremos nuestros componentes
-        const root = ReactDOM.createRoot(app);
-        // con el método root.render le indicamos lo que queremos desplegar declarativamente en el componente.
-
-        // Aquí en el root.render declaramos el componente Homepage entre brackets para que renderize todo
-        root.render(<HomePage/>);
-        // nota: es necesario utilizar Babel para realizar la conversión a jsx
-      </script>
-  </script>
+ 
+      const root = ReactDOM.createRoot(app);
+      root.render(<HomePage />);
+    </script>
 </body>
 
 </html>
