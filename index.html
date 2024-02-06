@@ -17,19 +17,32 @@
         return <h1>{ title ? title : 'titulo por defecto' }</h1>
       }
 
-      // Para demostrar este comportamiento, instalaremos 3 Headers 
-      // dentro de Homepage: dos tendrán títulos que inyectaremos desde el componente
-      // Homepage, y el tercero no tendrá, para que tenga que recurrir al título por defecto:
+      // A continuación, demostraremos como iterar a través de una lista de un array
+      // de elementos utilizando el método array.map()
 
       function HomePage() {
+        //Primero, cargamos el array previo al return de la función Homepage:
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+
+        // A continuación, modificaremos el return para que el header indique el título original y
+        // para mapear los elementos en una lista:
         return (
           <div>
-            <Header title='React es lo máximo'/>
-            <Header title='No veo la hora de saber Next.js!'/>
-            <Header/>
+            <Header title='Develop. Preview. Ship'/>
+            <ul>
+              {names.map(name => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
           </div>
         )
       }
+
+// Es importante recordar que React exigira una key única para cada uno de estos elementos:
+// Es la forma que tiene React para asegurarse que cada uno de los elementos que incluya en el document
+// es único y el correcto para su despliegue. Para este caso utilizaremos los mismos nombres de cada elementos
+// en tanto siguen siendo únicos. Sin embargo, para casos reales, es preferible utilizar un recurso único, como un Item Id.
+
 
         // apuntamos al div con id 'app'
         const app = document.getElementById('app');
